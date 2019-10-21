@@ -1,6 +1,7 @@
 
 from .CardTypes import Face, Suit
 from .Card import Card
+import random
 
 class Deck():
 
@@ -25,9 +26,12 @@ class Deck():
         return
     
     def reset(self):
+        self.cards = []
         for f in self.faces:
             for c in self.suits:
                 self.cards.append(Card(f,c))
 
     def shuffle(self):
-        return
+        for i in range(len(self.cards)):
+            swap = random.randrange(len(self.cards))
+            self.cards[i], self.cards[swap] = self.cards[swap], self.cards[i]
