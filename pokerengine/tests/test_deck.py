@@ -18,7 +18,6 @@ class TestDeck(unittest.TestCase):
         """Tear down test fixtures, if any."""
 
     def test_000_initlen(self):
-        """Test something."""
         deck = Deck()
         assert(len(deck.cards) == 52)
 
@@ -35,10 +34,39 @@ class TestDeck(unittest.TestCase):
     
     def test_003_shufflerandom(self):
         deck = Deck()
-        deck1 = Deck()
-        deck1.shuffle()
-        if deck.cards == deck1.cards:
-            raise Exception()
+        deck.shuffle()
+    
+    def test_004_burn(self):
+        deck = Deck()
+        card = deck.cards[1]
+        deck.burn()
+        assert (deck.cards[0] == card)
+    
+    def test_005_turn(self):
+        deck = Deck()
+        card = deck.cards[1]
+        turn = deck.turn()
+        assert (turn == card)
+    
+    def test_006_river(self):
+        deck = Deck()
+        card = deck.cards[1]
+        river = deck.river()
+        assert (river == card)
+
+    def test_007_flop(self):
+        deck = Deck()
+        flop_actual = (deck.cards[1], deck.cards[2], deck.cards[3])
+        flop = deck.flop()
+        assert (flop_actual == flop)
+
+    def test_008_dealcard(self):
+        deck = Deck()
+        deal_actual = deck.cards[0]
+        deal = deck.deal_card()
+        assert (deal == deal_actual)
+
+
 
     
 

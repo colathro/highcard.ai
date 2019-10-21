@@ -14,22 +14,29 @@ class Deck():
         self.reset()
     
     def flop(self):
-        return
+        self.burn()
+        return (self.cards.pop(0), self.cards.pop(0), self.cards.pop(0))
     
     def turn(self):
-        return
+        self.burn()
+        return self.cards.pop(0)
     
+    def deal_card(self):
+        return self.cards.pop(0)
+
     def river(self):
-        return
+        self.burn()
+        return self.cards.pop(0)
 
     def burn(self):
-        return
+        self.cards.pop(0)
     
     def reset(self):
         self.cards = []
         for f in self.faces:
             for c in self.suits:
                 self.cards.append(Card(f,c))
+        self.shuffle()
 
     def shuffle(self):
         for i in range(len(self.cards)):
